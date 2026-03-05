@@ -25,8 +25,8 @@ export const API = {
     },
 
     // Usuários
-    login: (id, senha) => {
-        return db.usuarios.find(u => u.id == id && u.senha == senha);
+    login: ({email,senha}) => {
+        return db.usuarios.find(u => u.email == email && u.senha == senha);
     }
 };
 

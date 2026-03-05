@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {API} from "../js/api.js"
 
 const Input = ({ label, type, value, onChange, placeholder }) => {
     return (
@@ -27,6 +28,8 @@ const Button = ({ text }) => {
     );
 };
 
+
+
 // Alterado apenas para 'Login' com L maiúsculo para o React reconhecer como componente
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -35,8 +38,8 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Pronto para receber o IndexedDB depois
-        console.log('Dados enviados:', { email, senha });
-        alert(`Login tentado com: ${email}`);
+        API.login({email,senha})
+        alert("Deu certo")
     };
 
     return (

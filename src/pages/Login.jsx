@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
 import {API} from "../js/api.js"
 
 const Input = ({ label, type, value, onChange, placeholder }) => {
@@ -35,11 +36,14 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    const navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Pronto para receber o IndexedDB depois
-        API.login({email,senha})
-        alert("Deu certo")
+        const user = API.login({email,senha})
+
+        navigate("/dashboard")
     };
 
     return (
